@@ -1,18 +1,56 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import * as React from "react"
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { 
+  TopNavigation,
+} from '../components'
+import * as classes from './layout.module.scss';
+import { 
+  CalaLlombards
+} from '../images'
 
-import Header from "./header"
+import ReactGa from 'react-ga'
 import "./layout.css"
 
 const Layout = ({ children }) => {
+  const [background, setBackground] = useState(null)
+  console.log(classes)
+  const backgroundHeroImage = {
+    backgroundImage: `url(${CalaLlombards})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  }
+
+  const backgroundColor = {
+    backgroundColor: '#080935'
+  }
+
+  const styling = () => {
+    if (window.location.pathname === '/') {
+      return (
+        setBackground(
+          backgroundHeroImage
+        )
+      ) 
+    } else {
+      return (
+        setBackground(
+          backgroundColor
+        )
+      )
+    }
+  }
+  useEffect(() => {
+    styling()
+    ReactGa.initialize('PUT YOUR GOOGLE ANALYTICS CODE HERE')
+
+    // to report page view
+    ReactGa.pageview(window.location.pathname + window.location.search)
+  }, [])
+  const changeColor = (color) => {
+    setBackground(color)
+  }
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,7 +63,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+    <div className={classes.App} style={background}>
+      <TopNavigation changeColor={changeColor} backgroundHeroImage={backgroundHeroImage} />
       <div
         style={{
           margin: `0 auto`,
@@ -44,6 +83,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
+    </div>
     </>
   )
 }

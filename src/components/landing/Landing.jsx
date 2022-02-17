@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Landing.module.scss';
+import * as classes from './Landing.module.scss';
 
 const Landing = () => {
   return (

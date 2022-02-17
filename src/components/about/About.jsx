@@ -1,4 +1,4 @@
-import classes from './About.module.scss';
+import * as classes from './About.module.scss';
 import React from 'react'
 
 export default function About() {

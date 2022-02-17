@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Navbar.module.scss'
+import * as classes from './Navbar.module.scss'
 import { Link } from 'react-router-dom'
 import { Burger } from '../index'
 
