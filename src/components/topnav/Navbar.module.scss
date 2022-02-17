@@ -1,0 +1,25 @@
+.navbarContent {
+  min-height: 10vh;
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 786px) {
+    display: flex;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.logoContainer {
+  z-index: 30;
+  @media screen and (max-width: 786px) {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+
+

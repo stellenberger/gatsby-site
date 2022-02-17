@@ -1,0 +1,48 @@
+.landingContainer {
+  width: 80%;
+  height: 95vh;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+    margin: auto;
+  }
+  .welcomeMessage {
+    text-align: left;
+    @media (max-width: 900px) {
+      text-align: center;
+      width: 95%;
+      margin: 0;
+    }
+    .landingHello {
+      font-size: 40px;
+      animation: slide 1s ease-out 0s 1 normal forwards;
+    }
+    .landingName {
+      font-size: 35px;
+      animation: slide 1.25s ease-out 0s 1 normal forwards;
+      .name {
+        color: #BECC0C; 
+      }
+    }
+    .landingContent {
+      opacity: 0;
+      font-size: 20px;
+      animation: slide 1.5s ease-out 1s 1 normal forwards;
+    }
+  }
+}
+
+@keyframes slide {
+  from { transform: translateX(-200px); opacity: 0;}  
+  to { transform: translateX(0px); opacity: 1;}  
+}
+
